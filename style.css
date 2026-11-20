@@ -157,3 +157,16 @@ dialog .content-hint { margin-top: -3px; }
   .academic-card { grid-template-columns: 1fr; gap: 0; }
   header { justify-content: flex-end; }
 }
+
+/* Capas e ações dos projetos preenchidos. */
+.project-cover--image { padding: 0; overflow: hidden; }
+.project-cover--image img { display: block; width: 100%; height: 300px; object-fit: contain; }
+.project-cover--image .cover-category { background: var(--primary); padding: 4px 10px; color: var(--muted); }
+.card-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0 24px; }
+.dialog-project-image { display: block; width: 315px; max-width: 100%; height: auto; margin: 28px auto; }
+@media (max-width: 900px) {
+  .project-cover--image img { height: 280px; }
+}
+@media (max-width: 650px) {
+  .project-cover--image img { height: 270px; }
+}
