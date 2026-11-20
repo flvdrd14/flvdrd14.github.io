@@ -170,3 +170,20 @@ dialog .content-hint { margin-top: -3px; }
 @media (max-width: 650px) {
   .project-cover--image img { height: 270px; }
 }
+
+/* Assets 3D e projetos acadêmicos. */
+.asset-list { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 20px 0 0; }
+.asset-list li { background: var(--secondary); color: var(--text); border: 1px solid var(--panel-line); padding: 5px 12px; font-size: .875rem; }
+.academic-card { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 32px 0; align-items: start; }
+.academic-intro h3 { margin-top: 18px; }
+.academic-intro > p:not(.eyebrow), .academic-projects p { color: var(--muted); }
+.academic-projects > article + article, .academic-projects > section + section { border-top: 1px solid var(--line); margin-top: 24px; padding-top: 24px; }
+.academic-projects h4 { font: 500 1.35rem/1.3 var(--font-title); margin: 0 0 12px; }
+.project-status { display: inline-block; color: var(--text); background: var(--secondary); border: 1px solid var(--panel-line); font-size: .875rem; padding: 3px 10px; margin-bottom: 10px; }
+.asset-gallery figure { margin: 24px 0 0; }
+.asset-gallery a { display: block; cursor: zoom-in; }
+.asset-gallery img { display: block; width: 100%; height: auto; border: 1px solid var(--panel-line); }
+.asset-gallery figcaption { color: var(--muted); font-size: .875rem; padding-top: 8px; }
+@media (max-width: 650px) {
+  .academic-card { gap: 28px; }
+}

@@ -32,22 +32,31 @@ const projects = {
     ], links: ['Documentação do projeto', 'Galeria de trabalhos']
   },
   academicos: {
-    name: 'Trabalhos acadêmicos', category: 'FORMAÇÃO E PESQUISA', media: 'Imagens, apresentações ou documentos dos trabalhos',
-    sections: [
-      ['Sobre os trabalhos', 'Tema, disciplina, instituição e período'],
-      ['Objetivos e desenvolvimento', 'Proposta, metodologia e etapas realizadas'],
-      ['Minha participação', 'Responsabilidades individuais e colaboração com a equipe'],
-      ['Resultados e aprendizados', 'Entregas, conclusões e conhecimentos desenvolvidos']
-    ], links: ['Documento do trabalho', 'Apresentação ou galeria']
+    name: 'Trabalhos acadêmicos', category: 'FORMAÇÃO E PESQUISA',
+    descriptionTitle: 'Sobre os trabalhos',
+    description: ['Projetos de jogos e narrativa interativa.'],
+    works: [
+      {
+        name: 'FeedTheFish',
+        status: 'Em desenvolvimento',
+        description: 'Jogo de plataforma 2D em desenvolvimento no GDevelop.'
+      },
+      {
+        name: 'Uma Nova Voz',
+        description: 'Visual novel desenvolvida no Ren’Py.'
+      }
+    ]
   },
   blender: {
-    name: 'Assets no Blender', category: 'ARTE 3D', media: 'Renders, detalhes da malha ou vídeo dos modelos',
-    sections: [
-      ['Sobre os assets', 'Nome, proposta e finalidade dos modelos'],
-      ['Processo de criação', 'Referências, modelagem e texturização'],
-      ['Ferramentas e características', 'Técnicas utilizadas e detalhes relevantes dos assets'],
-      ['Aplicação e aprendizados', 'Como os modelos são utilizados e o que aprendi']
-    ], links: ['Galeria dos assets', 'Vídeo de apresentação']
+    name: 'Assets no Blender', category: 'ARTE 3D',
+    descriptionTitle: 'Sobre os assets',
+    description: ['Modelos 3D criados no Blender.'],
+    assets: ['Caixa de som', 'Estante', 'Lousa', 'Lanterna', 'Gramofone', 'Livro', 'Piano'],
+    gallery: [
+      { src: 'assets/blender-gramofone-01.png', alt: 'Modelo 3D de um gramofone exibido no Blender.', caption: 'Gramofone — modelagem no Blender', width: 1912, height: 1024 },
+      { src: 'assets/blender-piano.png', alt: 'Modelo 3D de um piano em processo de modelagem no Blender.', caption: 'Piano — modelagem no Blender', width: 1920, height: 1080 },
+      { src: 'assets/blender-gramofone-02.png', alt: 'Outra captura do modelo 3D do gramofone na interface do Blender.', caption: 'Gramofone — visão da cena', width: 1920, height: 1080 }
+    ]
   }
 };
 const dialog = document.querySelector('#project-dialog');
@@ -58,12 +67,15 @@ document.querySelectorAll('[data-project]').forEach(button => {
     content.innerHTML = project.description ? `
       <span class="eyebrow">${project.category}</span>
       <h2 id="dialog-title">${project.name}</h2>
-      <img class="dialog-project-image" src="${project.image}" alt="${project.imageAlt}" width="315" height="250">
+      ${project.image ? `<img class="dialog-project-image" src="${project.image}" alt="${project.imageAlt}" width="315" height="250">` : ''}
       <section class="project-description">
-        <h3>Sobre o jogo</h3>
+        <h3>${project.descriptionTitle || 'Sobre o jogo'}</h3>
         ${project.description.map(paragraph => `<p>${paragraph}</p>`).join('')}
       </section>
-      <a class="button" href="${project.url}" target="_blank" rel="noopener noreferrer">Jogar no itch.io</a>
+      ${project.assets ? `<section><h3>Assets modelados</h3><ul class="asset-list">${project.assets.map(asset => `<li>${asset}</li>`).join('')}</ul></section>` : ''}
+      ${project.works ? `<div class="academic-projects academic-projects--dialog">${project.works.map(work => `<section><h3>${work.name}</h3>${work.status ? `<span class="project-status">${work.status}</span>` : ''}<p>${work.description}</p></section>`).join('')}</div>` : ''}
+      ${project.gallery ? `<section class="asset-gallery"><h3>Galeria</h3><p>Selecione uma imagem para ampliar.</p>${project.gallery.map(photo => `<figure><a href="${photo.src}" target="_blank" rel="noopener noreferrer" aria-label="Ampliar imagem: ${photo.caption}"><img src="${photo.src}" alt="${photo.alt}" width="${photo.width}" height="${photo.height}" loading="lazy"></a><figcaption>${photo.caption}</figcaption></figure>`).join('')}</section>` : ''}
+      ${project.url ? `<a class="button" href="${project.url}" target="_blank" rel="noopener noreferrer">Jogar no itch.io</a>` : ''}
     ` : `
       <span class="eyebrow">${project.category} / CONTEÚDO A PREENCHER</span>
       <h2 id="dialog-title">${project.name}</h2>

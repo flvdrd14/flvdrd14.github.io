@@ -66,19 +66,36 @@
           </button>
           <div class="card-body"><h3>Projetos de engenharia</h3><p class="content-hint">Problema · solução desenvolvida · resultados</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><button class="text-link" data-project="engenharia">Ver detalhes</button></div>
         </article>
-        <article class="project-card">
-          <button class="project-cover" data-project="blender" aria-label="Ver detalhes dos assets no Blender">
+        <article class="project-card" id="assets-blender">
+          <button class="project-cover project-cover--image" data-project="blender" aria-label="Ver detalhes dos assets no Blender">
             <span class="cover-category">ARTE 3D</span>
-            <span class="media-frame" aria-hidden="true"><span class="media-plus">+</span><span>Render ou imagem dos modelos</span><small>Espaço reservado</small></span>
+            <img src="assets/blender-gramofone-01.png" alt="Modelo 3D de um gramofone exibido no Blender." width="1912" height="1024" loading="lazy">
           </button>
-          <div class="card-body"><h3>Assets no Blender</h3><p class="content-hint">Modelos · processo de criação · aplicação</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><button class="text-link" data-project="blender">Ver detalhes</button></div>
+          <div class="card-body">
+            <h3>Assets no Blender</h3>
+            <p>Modelos 3D criados no Blender.</p>
+            <ul class="asset-list" aria-label="Assets modelados no Blender"><li>Caixa de som</li><li>Estante</li><li>Lousa</li><li>Lanterna</li><li>Gramofone</li><li>Livro</li><li>Piano</li></ul>
+            <button class="text-link" data-project="blender">Ver galeria e detalhes</button>
+          </div>
         </article>
-        <article class="project-card academic-card">
-          <button class="project-cover" data-project="academicos" aria-label="Ver detalhes dos trabalhos acadêmicos">
-            <span class="cover-category">TRABALHOS ACADÊMICOS</span>
-            <span class="media-frame" aria-hidden="true"><span class="media-plus">+</span><span>Imagens, apresentações ou documentos</span><small>Espaço reservado</small></span>
-          </button>
-          <div class="card-body"><h3>Trabalhos acadêmicos</h3><p class="content-hint">Tema · disciplina · minha participação · aprendizados</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><button class="text-link" data-project="academicos">Ver detalhes</button></div>
+        <article class="project-card academic-card" id="trabalhos-academicos">
+          <div class="academic-intro">
+            <p class="eyebrow">TRABALHOS ACADÊMICOS</p>
+            <h3>Trabalhos acadêmicos</h3>
+            <p>Projetos de jogos e narrativa interativa.</p>
+            <button class="text-link" data-project="academicos">Ver detalhes dos trabalhos acadêmicos</button>
+          </div>
+          <div class="academic-projects">
+            <article>
+              <h4>FeedTheFish</h4>
+              <span class="project-status">Em desenvolvimento</span>
+              <p>Jogo de plataforma 2D em desenvolvimento no GDevelop.</p>
+            </article>
+            <article>
+              <h4>Uma Nova Voz</h4>
+              <p>Visual novel desenvolvida no Ren’Py.</p>
+            </article>
+          </div>
         </article>
       </div>
     </section>
