@@ -14,13 +14,18 @@ const projects = {
     url: 'https://giokobi.itch.io/agarre-se'
   },
   puzzle: {
-    name: 'Puzzle for Two', category: 'JOGO', media: 'Capturas das fases ou vídeo de gameplay',
-    sections: [
-      ['Sobre o jogo', 'Proposta, gênero e objetivo dos jogadores'],
-      ['Minha participação', 'O que desenvolvi e quais foram minhas responsabilidades'],
-      ['Mecânicas e ferramentas', 'Cooperação, puzzles e recursos utilizados'],
-      ['Processo e aprendizados', 'Desafios, testes e melhorias realizadas']
-    ], links: ['Link para jogar', 'Página ou vídeo do projeto']
+    name: 'Puzzle for Two', category: 'JOGO',
+    description: [
+      '<strong>Puzzle for Two</strong> é um jogo cooperativo de enigmas para dois jogadores. Em salas separadas, cada participante encontra pistas diferentes e precisa compartilhar suas descobertas para avançar. Entre letras, cores, símbolos, cálculos e melodias, comunicação e raciocínio lógico são essenciais para resolver os desafios em conjunto.'
+    ],
+    galleryTitle: 'Imagens das fases',
+    gallery: [
+      { src: 'assets/puzzle-fase-01-letras-e-lanternas.webp', alt: 'Duas salas com um quadro de letras coloridas, lanternas e um painel de códigos.', caption: 'Fase 1 — Letras e Lanternas', width: 1774, height: 887 },
+      { src: 'assets/puzzle-fase-03-oficina-dos-simbolos.webp', alt: 'Duas salas com blocos, símbolos e prateleiras de formas para um desafio em dupla.', caption: 'Fase 3 — Oficina dos Símbolos', width: 1774, height: 887 },
+      { src: 'assets/puzzle-fase-04-sala-das-contas.webp', alt: 'Duas salas com lousas, dados e blocos de operações matemáticas.', caption: 'Fase 4 — Sala das Contas', width: 1774, height: 887 },
+      { src: 'assets/puzzle-fase-05-quarto-da-melodia.webp', alt: 'Duas salas com notas musicais, caixas de som e um piano.', caption: 'Fase 5 — Quarto da Melodia', width: 1774, height: 887 },
+      { src: 'assets/puzzle-fase-06-pontes-encantadas.webp', alt: 'Duas salas com pontes e peças coloridas marcadas com formas geométricas.', caption: 'Fase 6 — Pontes Encantadas', width: 1774, height: 887 }
+    ]
   },
   engenharia: {
     name: 'Projetos de engenharia', category: 'ENGENHARIA', media: 'Desenhos técnicos, modelos CAD ou resultados de simulações',
@@ -74,7 +79,7 @@ document.querySelectorAll('[data-project]').forEach(button => {
       </section>
       ${project.assets ? `<section><h3>Assets modelados</h3><ul class="asset-list">${project.assets.map(asset => `<li>${asset}</li>`).join('')}</ul></section>` : ''}
       ${project.works ? `<div class="academic-projects academic-projects--dialog">${project.works.map(work => `<section><h3>${work.name}</h3>${work.status ? `<span class="project-status">${work.status}</span>` : ''}<p>${work.description}</p></section>`).join('')}</div>` : ''}
-      ${project.gallery ? `<section class="asset-gallery"><h3>Galeria</h3><p>Selecione uma imagem para ampliar.</p>${project.gallery.map(photo => `<figure><a href="${photo.src}" target="_blank" rel="noopener noreferrer" aria-label="Ampliar imagem: ${photo.caption}"><img src="${photo.src}" alt="${photo.alt}" width="${photo.width}" height="${photo.height}" loading="lazy"></a><figcaption>${photo.caption}</figcaption></figure>`).join('')}</section>` : ''}
+      ${project.gallery ? `<section class="asset-gallery"><h3>${project.galleryTitle || 'Galeria'}</h3><p>Selecione uma imagem para ampliar.</p>${project.gallery.map(photo => `<figure><a href="${photo.src}" target="_blank" rel="noopener noreferrer" aria-label="Ampliar imagem: ${photo.caption}"><img src="${photo.src}" alt="${photo.alt}" width="${photo.width}" height="${photo.height}" loading="lazy"></a><figcaption>${photo.caption}</figcaption></figure>`).join('')}</section>` : ''}
       ${project.url ? `<a class="button" href="${project.url}" target="_blank" rel="noopener noreferrer">Jogar no itch.io</a>` : ''}
     ` : `
       <span class="eyebrow">${project.category} / CONTEÚDO A PREENCHER</span>
@@ -94,3 +99,4 @@ dialog.addEventListener('click', event => {
   const bounds = dialog.getBoundingClientRect();
   if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) dialog.close();
 });
+
